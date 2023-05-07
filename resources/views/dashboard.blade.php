@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout >
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -7,8 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-yellow-100 dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-black-900 dark:text-gray-100">
 
                     <h1 class="text-xl font-semibold">TO DO LIST</h1>
 
@@ -20,12 +20,12 @@
                             @csrf
 
                             <div class="mt-4">
-                                <x-input-label for="description" :value="__('Description')" />
-                                <x-text-input id="description" class="block mt-1 w-full " type="text" name="description" required />
+                                <x-input-label for="description" :value="__('Description')" class=" text-xl"/>
+                                <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" required />
                             </div>
 
                             <div class="mt-4">
-                                <x-input-label for="expiration" :value="__('Expiration')" />
+                                <x-input-label for="expiration" :value="__('Expiration')" class=" text-xl" />
                                 <x-text-input id="expiration" class="block mt-1 w-full" type="text" name="expiration" required />
                             </div>
                             <br>
@@ -34,17 +34,27 @@
                     </fieldset>
 
                     <br>
+                    <h1 class="text-xl font-semibold">Your Tasks: </h1>
+
+                    <br>
+
                     @foreach (Auth::user()->myTasks as $task)
 
-                    <div class="flex justify-between border-b mb-2 gap-4
+            
+
+                    <div class="flex justify-between border-b mb-2 gap-4 
                     hover:bg-pink-200" x-data=" { showDelete: false, showEdit: false  } ">
 
-                        <div class="flex justify-between flex-grow">
+                    
+                    <div class="flex justify-between flex-grow ">
                             <div>Description: {{ $task -> description }} </div>
+
                             <div>Expiration: {{ $task -> expiration }} </div>
+
                             <hr>
                         </div>
 
+                        
                         <div class="flex gap-2">
                             <div>
                                 <span class="cursor-pointer px-2 bg-pink-900 text-white" @click="showDelete = true "> Delete </span>
